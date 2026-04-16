@@ -1,0 +1,112 @@
+.install-scroll-container {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #121212;
+}
+
+/* Thanh cuộn tàng hình đồng bộ */
+.install-scroll-container::-webkit-scrollbar { width: 12px; }
+.install-scroll-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Nền Gradient Hồng - Xanh */
+.install-container {
+  background: linear-gradient(135deg, #e49eb7 0%, #d8a2c2 30%, #87bead 100%);
+  padding: 80px 40px 0 40px; /* Thêm padding trên để đẩy nội dung xuống */
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.install-content {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #000; /* Nền sáng nên chữ phải màu đen */
+}
+
+.install-content h1 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+
+.install-desc {
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+/* Nút Microsoft Store */
+.ms-store-btn {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  margin-bottom: 24px;
+}
+
+.ms-store-btn:hover {
+  transform: scale(1.04);
+  background-color: #1a1a1a;
+}
+
+.btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.btn-small-text {
+  font-size: 11px;
+  margin-bottom: -2px;
+}
+
+.btn-large-text {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Link tải trực tiếp */
+.direct-download-link {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 60px;
+}
+
+.direct-download-link:hover {
+  text-decoration: underline;
+}
+
+/* Ảnh Mockup Laptop */
+.app-mockup {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.app-mockup img {
+  width: 100%;
+  display: block;
+}

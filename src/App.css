@@ -1,0 +1,140 @@
+/* --- 1. KHUNG CHỨA TOÀN BỘ APP --- */
+.spotify-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  overflow: hidden;
+}
+
+/* --- 2. PHẦN THÂN GIỮA (3 Cột) --- */
+.spotify-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  padding: 0; 
+  gap: 0; 
+  background-color: black;
+}
+
+/* --- 3. WRAPPER CHO CÁC CỘT (Sidebar & RightSidebar) --- */
+.column-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.column-wrapper > div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- 4. CỘT GIỮA (MAIN VIEW) --- */
+.main-view-container {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #121212;
+  border-radius: 8px;
+  margin: 0; 
+}
+
+/* --- 5. THANH KÉO (RESIZER) --- */
+.resizer {
+  width: 2px;
+  cursor: col-resize;
+  background-color: transparent;
+  transition: background-color 0.2s;
+  z-index: 10;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  margin: 0 -2px;
+}
+
+.resizer:hover, .resizer:active {
+  background-color: #1db954; 
+}
+
+/* --- 6. TÙY CHỈNH THANH CUỘN (SCROLLBAR) --- */
+.main-view-container::-webkit-scrollbar,
+.library-list::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.main-view-container::-webkit-scrollbar-track,
+.library-list::-webkit-scrollbar-track,
+.right-sidebar::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.main-view-container::-webkit-scrollbar-thumb,
+.library-list::-webkit-scrollbar-thumb,
+.right-sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1); 
+  border-radius: 10px;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+.main-view-container::-webkit-scrollbar-thumb:hover,
+.library-list::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  background-clip: padding-box;
+}
+
+/* --- 7. CẤU HÌNH DÀNH RIÊNG CHO MOBILE (Responsive) --- */
+@media (max-width: 768px) {
+  /* Ẩn các thanh kéo và 2 cột bên để tiết kiệm diện tích */
+  .resizer, 
+  .column-wrapper {
+    display: none !important;
+  }
+
+  /* Cột giữa tràn màn hình, bỏ bo góc */
+  .main-view-container {
+    width: 100vw !important;
+    margin: 0;
+    border-radius: 0;
+    /* Trừ đi chiều cao của Header và Player để không bị lấp bài hát */
+    height: calc(100vh - 150px); 
+  }
+
+  /* Tối ưu lại Player trên màn hình nhỏ */
+  .player {
+    height: 75px;
+    padding: 0 12px;
+  }
+
+  /* Ẩn bớt các thành phần gây rối trên mobile */
+  .player-right, 
+  .progress-container,
+  .like-btn {
+    display: none !important;
+  }
+
+  .player-left {
+    width: 75%; /* Dành chỗ hiện tên bài hát */
+  }
+
+  .player-center {
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .player-controls {
+    gap: 0;
+    margin-bottom: 0;
+  }
+
+  /* Chỉ hiện nút Play/Pause trên Mobile Nav */
+  .player-controls .control-icon:not(.play-circle) {
+    display: none;
+  }
+}

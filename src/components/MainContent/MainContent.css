@@ -1,0 +1,246 @@
+/* =========================================
+   1. KHUNG TỔNG THỂ (MAIN CONTENT)
+   ========================================= */
+.main-content {
+  flex: 1;
+  background-color: #121212;
+  border-radius: 8px;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* Chống nhảy layout khi thanh cuộn xuất hiện */
+  scrollbar-gutter: stable;
+}
+
+/* Hiệu ứng Gradient đặc trưng của Spotify cho phần đầu trang */
+.main-content.red-theme {
+  background: linear-gradient(to bottom, #9a1010 0%, #121212 400px);
+  background-color: #121212;
+}
+
+/* --- Tùy chỉnh thanh cuộn (Scrollbar) --- */
+.main-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  /* Mặc định ẩn thumb để giao diện thoáng */
+  background-color: transparent;
+  border-radius: 10px;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Chỉ hiện thanh cuộn khi rê chuột vào vùng nội dung */
+.main-content:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* =========================================
+   2. BỘ LỌC (CONTENT FILTERS)
+   ========================================= */
+.content-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.filter-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 500px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-btn.active {
+  background-color: white;
+  color: black;
+}
+
+/* =========================================
+   3. CẤU TRÚC CARD & GRID (PHẦN NHẠC)
+   ========================================= */
+.card-section {
+  margin-bottom: 40px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitle {
+  color: #ffffffb3;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.section-title h2 {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Grid tự động nhảy cột theo chiều rộng */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 24px;
+}
+
+.spotify-card {
+  background-color: #181818;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.spotify-card:hover {
+  background-color: #282828;
+}
+
+.card-img-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.spotify-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Nút Play xanh lá thần thánh */
+.play-btn {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  background-color: #1db954;
+  color: black;
+  font-size: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+.spotify-card:hover .play-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.play-btn:hover {
+  background-color: #1ed760;
+  transform: scale(1.05) !important;
+}
+
+.spotify-card h3 {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spotify-card p {
+  color: #a7a7a7;
+  font-size: 14px;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.social-icon {
+  background-color: #292929;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.social-icon:hover {
+  background-color: #727272;
+};
+
+.legal-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.legal-links a {
+  color: #b3b3b3;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.legal-links a:hover {
+  color: white;
+}
+
+.copyright {
+  color: #b3b3b3;
+  font-size: 13px;
+}
+
+/* =========================================
+   5. RESPONSIVE (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px;
+  }
+  
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .footer-links {
+    gap: 40px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

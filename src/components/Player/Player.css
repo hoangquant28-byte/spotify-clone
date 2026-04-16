@@ -1,0 +1,164 @@
+/* --- TỔNG THỂ THANH PLAYER --- */
+.player {
+  height: 90px;
+  background-color: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-top: 1px solid #282828;
+  z-index: 100;
+  position: relative;
+}
+
+/* --- KHỐI TRÁI --- */
+.player-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 30%;
+  min-width: 180px;
+}
+.now-playing-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 4px;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+.now-playing-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.now-playing-info h4 {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+  cursor: pointer;
+}
+.now-playing-info h4:hover { text-decoration: underline; }
+.now-playing-info p {
+  color: #b3b3b3;
+  font-size: 11px;
+  margin: 0;
+  cursor: pointer;
+}
+.now-playing-info p:hover { color: white; text-decoration: underline; }
+
+/* --- ICON & NÚT CHUNG --- */
+.control-icon {
+  color: #b3b3b3;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.control-icon:hover { color: white; }
+.like-btn { margin-left: 8px; }
+
+/* Nút Play Tròn Trắng */
+.play-circle {
+  background-color: white;
+  color: black;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.play-circle:hover { transform: scale(1.06); }
+.play-circle svg {
+  width: 16px;
+  height: 16px;
+  margin-left: 2px;
+}
+
+/* --- KHỐI GIỮA --- */
+.player-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  max-width: 722px;
+}
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+
+/* --- THANH SLIDER (CẢ PROGRESS VÀ VOLUME) --- */
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.player-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 4px;
+  background: #4d4d4d; /* Màu xám của phần chưa chạy */
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  /* Phần màu này được React cập nhật qua thuộc tính style inline */
+}
+
+/* Ẩn cái chấm tròn (Thumb) mặc định */
+.player-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  display: none; /* Mặc định ẩn như Spotify */
+}
+
+/* Hiệu ứng HOVER: Hiện chấm tròn và thanh trượt đổi màu */
+.player-slider:hover::-webkit-slider-thumb {
+  display: block;
+}
+
+/* Thông số thời gian */
+.time {
+  color: #a7a7a7;
+  font-size: 11px;
+  min-width: 35px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- KHỐI PHẢI --- */
+.player-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  width: 30%;
+  min-width: 180px;
+}
+
+/* Giới hạn độ dài thanh volume */
+.volume-container {
+  width: 93px;
+  display: flex;
+  align-items: center;
+}
+
+/* Tùy chỉnh Slider Volume ngắn hơn slider nhạc */
+.volume-slider {
+  width: 93px;
+  margin: 0;
+}

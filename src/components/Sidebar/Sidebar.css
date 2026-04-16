@@ -1,0 +1,473 @@
+/* --- TỔNG THỂ SIDEBAR --- */
+.sidebar {
+  width: 280px;
+  background-color: #121212;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 8px;
+  z-index: 10000;
+  position: relative;
+}
+
+/* =========================================
+   TOOLTIP HIỆU ỨNG (LIA CHUỘT)
+========================================= */
+.has-tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Cái hộp chú thích mặc định (Trồi lên trên) */
+.has-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #282828;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 10000;
+  pointer-events: none;
+}
+.has-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #282828 transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+/* Hiển thị tooltip khi lia chuột */
+.has-tooltip:hover::after,
+.has-tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ----------------------------------------------------
+   [QUAN TRỌNG] ĐẶC TRỊ TOOLTIP Ở HEADER CỦA SIDEBAR
+   -> Ép chúng rớt xuống dưới (Top 100%) để không bị cắt xén 
+------------------------------------------------------- */
+.sidebar-header .has-tooltip::after {
+  top: calc(100% + 12px); 
+}
+.sidebar-header .has-tooltip::before {
+  top: calc(100% + 2px);
+  border-color: transparent transparent #282828 transparent; /* Đảo ngược mũi tên chĩa lên */
+}
+
+/* ĐẶC TRỊ RIÊNG CHO ICON "YOUR LIBRARY" CĂN SÁT TRÁI */
+.library-icon.has-tooltip::after {
+  left: 0; 
+  transform: none; 
+  top: calc(100% + 12px); /* Hiện dưới Icon để ko bị đè */
+  padding: 6px 10px; 
+}
+.library-icon.has-tooltip::before {
+  display: none; /* Xóa mũi tên nhỏ đi cho giống gốc */
+}
+
+/* =========================================
+   HEADER THƯ VIỆN & CÁC NÚT BẤM
+========================================= */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+}
+
+.library-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #b3b3b3;
+  transition: color 0.2s;
+  white-space: nowrap; 
+  flex-shrink: 0; 
+}
+.library-toggle:hover { color: white; }
+
+.library-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.library-icon .svg-icon { width: 24px; height: 24px; }
+.library-toggle h2 { font-size: 16px; font-weight: 700; margin: 0; cursor: pointer; }
+
+.header-actions { 
+  display: flex; 
+  gap: 8px; 
+  align-items: center; 
+  flex-shrink: 0; 
+}
+
+.create-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #242424;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 500px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background-color 0.2s;
+  white-space: nowrap; 
+}
+.create-btn:hover { background-color: #333; }
+.create-btn svg { width: 14px; height: 14px; }
+
+.expand-btn { 
+  color: #b3b3b3; 
+  padding: 6px; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  transition: 0.2s; 
+}
+.expand-btn:hover { color: white; background-color: #1a1a1a; }
+.expand-btn svg { width: 16px; height: 16px; }
+
+/* =========================================
+   BỘ LỌC (PILLS)
+========================================= */
+.sidebar-filters {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+}
+.sidebar-filters::-webkit-scrollbar { display: none; }
+
+.filter-pill {
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 500px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+.filter-pill:hover { background-color: #3e3e3e; }
+
+/* =========================================
+   TÌM KIẾM & RECENTS (MENU DROP DOWN)
+========================================= */
+.sidebar-sub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  margin-bottom: 12px;
+}
+
+.search-icon { 
+  color: #b3b3b3; 
+  padding: 4px; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  transition: 0.2s; 
+}
+.search-icon:hover { color: white; background-color: #1a1a1a; }
+.search-icon svg { width: 16px; height: 16px; }
+
+.recents-wrapper { position: relative; }
+
+.recents-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.recents-trigger:hover { color: white; transform: scale(1.02); }
+.recents-trigger svg { width: 16px; height: 16px; }
+
+.recents-dropdown-menu {
+  position: absolute;
+  top: 32px;
+  right: 0;
+  width: 200px;
+  background-color: #282828;
+  border-radius: 4px;
+  padding: 8px 0;
+  box-shadow: 0 16px 24px rgba(0,0,0,0.3);
+  z-index: 9999;
+}
+.dropdown-section-title { 
+  font-size: 11px; 
+  font-weight: 700; 
+  color: #a7a7a7; 
+  padding: 8px 16px; 
+  text-transform: uppercase; 
+  letter-spacing: 0.5px; 
+}
+.recents-dropdown-menu ul { list-style: none; margin: 0; padding: 0; }
+.recents-dropdown-menu li {
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #e5e5e5;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+.recents-dropdown-menu li:hover { background-color: #3e3e3e; }
+.recents-dropdown-menu li.active { color: #1ed760; }
+.check-icon { width: 16px; height: 16px; }
+.dropdown-divider { height: 1px; background-color: #3e3e3e; margin: 8px 0; }
+
+.view-as-options { display: flex; justify-content: space-around; padding: 4px 16px 8px; }
+.view-btn { 
+  color: #a7a7a7; 
+  width: 32px; 
+  height: 32px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  transition: 0.2s; 
+}
+.view-btn:hover { background-color: #3e3e3e; color: white; }
+.view-btn.active { background-color: #3e3e3e; color: #1ed760; }
+.view-btn svg { width: 16px; height: 16px; }
+
+/* =========================================
+   DANH SÁCH BÀI HÁT
+========================================= */
+.library-list { 
+  display: flex; 
+  flex-direction: column; 
+  overflow-y: auto; 
+  flex: 1; 
+  padding: 0 8px; 
+}
+.library-list::-webkit-scrollbar { width: 8px; }
+.library-list::-webkit-scrollbar-thumb { background-color: transparent; border-radius: 10px; }
+.library-list:hover::-webkit-scrollbar-thumb { background-color: #5a5a5a; }
+
+.library-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.library-item:hover, .library-item.active { background-color: #1a1a1a; }
+.library-item img { width: 48px; height: 48px; border-radius: 4px; object-fit: cover; }
+.library-item .artist-img { border-radius: 50%; }
+
+.item-info { 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  overflow: hidden; 
+}
+.item-info h4 { 
+  margin: 0 0 4px 0; 
+  color: white; 
+  font-size: 15px; 
+  font-weight: 500; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+.item-info p { 
+  margin: 0; 
+  color: #a7a7a7; 
+  font-size: 13px; 
+  display: flex; 
+  align-items: center; 
+  gap: 4px; 
+}
+.pin-icon { width: 12px; height: 12px; min-width: 12px; }
+/* Làm ảnh nghệ sĩ hình tròn trong Sidebar */
+.sidebar-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%; /* Tròn xoe */
+  object-fit: cover;
+}
+
+/* Nút pill khi active (Nền trắng chữ đen) */
+.filter-pill.active {
+  background-color: white !important;
+  color: black !important;
+}
+
+.library-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  gap: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.library-item:hover {
+  background-color: #1a1a1a;
+}
+.filter-close-btn {
+  background-color: #2a2a2a; /* Màu nền tối như ảnh */
+  color: #b3b3b3;            /* Màu xám của dấu X */
+  border: 1px solid #3e3e3e; /* Viền xám mỏng */
+  border-radius: 50%;        /* Làm cho nút TRÒN xoe */
+  width: 28px;               /* Chiều rộng bằng chiều cao */
+  height: 28px;
+  display: flex;             /* Căn giữa dấu X */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+  margin-right: 8px;
+  font-size: 14px;           /* Kích thước dấu X */
+}
+
+/* Hiệu ứng khi rê chuột vào cho giống thật */
+.filter-close-btn:hover {
+  background-color: #3e3e3e; /* Nền sáng lên một chút */
+  color: white;              /* Dấu X trắng rõ hơn */
+  border-color: #535353;
+}
+.sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #121212;
+  border-radius: 8px;
+  overflow: hidden; /* Chặn phần Header của Sidebar bị cuộn */
+}
+
+/* Chỉ riêng danh sách Playlist/Artists mới được cuộn */
+.library-list {
+  flex: 1;
+  overflow-y: auto; /* Hiện thanh cuộn khi danh sách quá dài */
+  padding: 8px;
+}
+
+/* Tùy chỉnh thanh cuộn cho đẹp (giống Spotify) */
+.library-list::-webkit-scrollbar {
+  width: 12px;
+}
+
+.library-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+/* --- PHẦN TAGS (PILLS) --- */
+.library-filters {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  align-items: center;
+}
+
+.filter-pill {
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 500px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filter-pill:hover {
+  background-color: #333;
+}
+
+/* Khi tag được chọn thì biến thành nền trắng, chữ đen */
+.filter-pill.active {
+  background-color: white;
+  color: black;
+}
+
+/* Nút X màu xám nhạt để tắt bộ lọc */
+.filter-close-btn {
+  background-color: #2a2a2a;
+  color: #b3b3b3;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.filter-close-btn:hover {
+  background-color: #333;
+  color: white;
+}
+
+/* --- XỬ LÝ HÌNH ẢNH TRÒN VÀ VUÔNG --- */
+.item-image {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Nếu là Artist -> Hình tròn */
+.item-image.circle {
+  border-radius: 50%;
+}
+
+/* Nếu là Album -> Hình vuông bo góc nhẹ */
+.item-image.square {
+  border-radius: 4px;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.item-name {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.item-subtitle {
+  color: #b3b3b3;
+  font-size: 13px;
+}

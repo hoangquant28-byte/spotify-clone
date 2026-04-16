@@ -1,0 +1,358 @@
+/* =========================================
+   1. KHUNG TỔNG THỂ (LAYOUT)
+   ========================================= */
+.header {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #000000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* =========================================
+   2. CỘT TRÁI (LOGO)
+   ========================================= */
+.header-left .spotify-icon {
+  width: 140px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.header-left .spotify-icon:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   3. CỘT GIỮA (HOME & SEARCH)
+   ========================================= */
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 500px;
+  margin-left: 32px;
+}
+
+/* --- Nút Home --- */
+.home-button {
+  background-color: #1f1f1f;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.home-button:hover {
+  background-color: #2a2a2a;
+  transform: scale(1.05);
+}
+
+.home-button.active .svg-icon,
+.icon-badge.active .svg-icon {
+  color: white !important;
+}
+
+/* --- Thanh Search (Đã Fix Lỗi Mất Chữ) --- */
+.search-container {
+  background-color: #1f1f1f;
+  border-radius: 500px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  height: 48px;
+  flex: 1;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, border 0.2s;
+  overflow: hidden; /* Ngăn chữ tràn ra ngoài viền */
+}
+
+.search-container:hover {
+  background-color: #2a2a2a;
+  border-color: #333;
+}
+
+.search-container:focus-within {
+  border-color: white;
+  background-color: #242424;
+}
+
+.search-container input {
+  background: transparent;
+  border: none;
+  color: white !important; /* Ép màu chữ trắng */
+  padding: 0 8px;
+  flex: 1; /* Cho input giãn hết cỡ */
+  min-width: 0; /* Ép input thu nhỏ lại khi chật */
+  width: 100%;
+  font-size: 14px;
+  outline: none;
+  text-overflow: ellipsis; /* Hiện dấu ... nếu quá dài */
+}
+
+.search-container input::placeholder {
+  color: #a7a7a7;
+}
+
+.search-icon, .clear-icon, .box-icon {
+  color: #b3b3b3;
+}
+
+.box-icon {
+  transition: color 0.2s, transform 0.2s;
+}
+
+.box-icon:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background-color: #333;
+  margin: 0 12px;
+}
+
+/* =========================================
+   4. CỘT PHẢI (ACTIONS & USER)
+   ========================================= */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.install-app {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.install-app:hover {
+  transform: scale(1.05);
+}
+
+.logged-in-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-badge {
+  color: #b3b3b3;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.icon-badge:hover {
+  color: white;
+  transform: scale(1.05);
+}
+
+.svg-icon {
+  width: 24px;
+  height: 24px;
+  color: inherit;
+}
+
+/* --- Avatar & Profile Menu --- */
+.profile-wrapper {
+  position: relative;
+}
+
+.profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.1s;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background-color: #282828;
+  width: 190px;
+  border-radius: 4px;
+  padding: 4px;
+  box-shadow: 0 16px 24px rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+.profile-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-dropdown li {
+  padding: 12px;
+  color: #e5e5e5;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2px;
+}
+
+.profile-dropdown li:hover {
+  background-color: #3e3e3e;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: #3e3e3e;
+  margin: 4px 8px;
+}
+
+.external-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* =========================================
+   5. NÚT AUTH (SIGNUP / LOGIN)
+   ========================================= */
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.signup-btn {
+  background: transparent;
+  border: none;
+  color: #b3b3b3;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.signup-btn:hover {
+  color: white;
+  transform: scale(1.05);
+}
+
+.login-btn {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 500px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.login-btn:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   6. CẤU HÌNH DÀNH RIÊNG CHO MOBILE
+   ========================================= */
+@media (max-width: 768px) {
+  .header {
+    padding: 8px 12px;
+    gap: 8px; /* Thu hẹp khoảng cách giữa các khối */
+  }
+
+  /* 1. Giữ Logo ổn định */
+  .header-left {
+    flex-shrink: 0; 
+  }
+  
+  .header-left .spotify-icon {
+    width: 85px; /* Thu nhỏ logo lại một chút cho cân đối */
+    height: auto;
+  }
+
+  /* 2. Xử lý Cột Giữa (Search Bar) */
+  .header-center {
+    margin-left: 0; /* Bỏ khoảng trống thừa */
+    flex: 1; /* Cho phép giãn nở chiếm hết không gian giữa */
+    min-width: 0;
+  }
+
+  /* ❌ QUAN TRỌNG: Ẩn nút Home vì đã có ở Bottom Nav dưới đáy */
+  .home-button {
+    display: none !important;
+  }
+
+  /* Trả lại hình dáng "viên thuốc" cho thanh Search */
+  .search-container {
+    min-width: 50px; /* Chống bị ép thành hình tròn */
+    padding: 0 10px;
+    height: 40px; /* Thu nhỏ chiều cao lại cho thanh thoát */
+  }
+
+  .search-container input {
+    font-size: 13px;
+    padding: 0 4px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* Ẩn bớt các icon phụ trong ô Search cho rộng chỗ gõ chữ */
+  .search-container .box-icon,
+  .search-container .divider {
+    display: none !important;
+  }
+
+  /* 3. Dọn dẹp Cột Phải */
+  .install-app,
+  .auth-buttons .signup-btn {
+    display: none !important; /* Ẩn bớt các nút không quan trọng */
+  }
+
+  .header-right {
+    gap: 8px;
+    flex-shrink: 0; /* Bảo vệ nút Login không bị bóp méo */
+  }
+  
+  .login-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}

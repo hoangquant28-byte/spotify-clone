@@ -1,0 +1,229 @@
+/* =========================================
+   1. KHUNG TỔNG THỂ (RIGHT SIDEBAR)
+   ========================================= */
+.right-sidebar {
+  width: 320px;
+  background-color: #121212;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  /* Margin phải để không dính sát mép trình duyệt */
+  margin-right: 8px; 
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* --- THANH CUỘN "TÀNG HÌNH" CHUẨN SPOTIFY --- */
+.right-sidebar::-webkit-scrollbar {
+  width: 12px; /* Độ rộng đủ để tạo khoảng trống */
+}
+
+.right-sidebar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+  /* Mẹo tạo thanh cuộn mảnh: dùng border trong suốt và background-clip */
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Chỉ hiện thanh cuộn khi rê chuột vào Sidebar */
+.right-sidebar:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Lớp đệm quan trọng: giúp nội dung không bị thanh cuộn đè lên */
+.rs-inner-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   2. HEADER & COVER IMAGE
+   ========================================= */
+.right-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.right-header h4 {
+  margin: 0;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.header-icons {
+  display: flex;
+  gap: 12px;
+  color: #b3b3b3;
+  font-size: 18px;
+}
+
+.header-icons span {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.header-icons span:hover {
+  color: white;
+}
+
+.right-cover img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   3. THÔNG TIN BÀI HÁT
+   ========================================= */
+.right-song-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.song-title h2 {
+  margin: 0;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.song-title p {
+  margin: 4px 0 0 0;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.add-btn {
+  color: #b3b3b3;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-btn:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+/* =========================================
+   4. CÁC THẺ NỘI DUNG (CREDITS & QUEUE)
+   ========================================= */
+.right-credits-card, 
+.right-next-card {
+  background-color: #242424;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.credits-header, 
+.next-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.credits-header h4, 
+.next-header h4 {
+  margin: 0;
+  color: white;
+  font-size: 16px;
+}
+
+.show-all, 
+.open-queue {
+  color: #b3b3b3;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.show-all:hover, 
+.open-queue:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Nút Follow chuẩn UI */
+.follow-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid #727272;
+  padding: 4px 16px;
+  border-radius: 500px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.follow-btn:hover {
+  border-color: white;
+  transform: scale(1.04);
+}
+
+/* Credit Item */
+.credit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.credit-item:last-child {
+  margin-bottom: 0;
+}
+
+.credit-info .name {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.credit-info .role {
+  color: #b3b3b3;
+  font-size: 14px;
+  margin: 2px 0 0 0;
+}
+
+/* Queue Item */
+.next-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.queue-mini-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.next-title {
+  margin: 0;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.next-artist {
+  margin: 2px 0 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}

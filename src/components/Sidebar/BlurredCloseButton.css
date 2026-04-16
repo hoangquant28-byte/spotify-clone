@@ -1,0 +1,27 @@
+.blurred-close-button {
+  background-color: #1a1a1a; /* Màu charcoal-grey rất tối cho nền nút */
+  color: #e0e0e0;            /* Màu off-white sáng cho dấu X sắc nét */
+  border: none;              /* ❌ Không dùng viền cứng (border) */
+  border-radius: 50%;        /* Làm cho nút TRÒN xoe tuyệt đối */
+  width: 32px;               /* Chiều rộng bằng chiều cao */
+  height: 32px;
+  display: flex;             /* Căn giữa dấu X tuyệt đối */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease; /* Hiệu ứng mượt mà khi hover */
+  
+  /* ✅ ĐÂY LÀ CHỖ CHỈNH VIỀN MỜ (GLOWING EFFECT) */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15); /* Bóng sáng trắng, độ nhòe lớn (15px), độ mờ thấp (0.15) */
+  
+  font-size: 14px;           /* Kích thước dấu X */
+  margin-right: 12px;
+}
+
+/* Hiệu ứng khi rê chuột vào: sáng đèn rực rỡ hơn */
+.blurred-close-button:hover {
+  background-color: #2a2a2a; /* Nền sáng lên một chút */
+  color: white;              /* Dấu X trắng rõ hơn */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25); /* Tăng độ sáng và độ nhòe khi hover */
+}

@@ -1,0 +1,54 @@
+.browse-container {
+  flex: 1;
+  background-color: #121212;
+  padding: 24px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.browse-container h2 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.browse-grid {
+  display: grid;
+  /* Tự động tính số cột dựa trên chiều rộng màn hình */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.browse-card {
+  position: relative;
+  height: 180px;
+  border-radius: 8px;
+  padding: 16px;
+  overflow: hidden; /* Cực kỳ quan trọng để cắt phần ảnh thừa */
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.browse-card h3 {
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  word-wrap: break-word;
+  max-width: 80%;
+}
+
+.browse-card img {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  right: 0;
+  /* Tạo hiệu ứng ảnh nghiêng giống Spotify */
+  transform: rotate(25deg) translate(18%, -2%);
+  box-shadow: 0 4px 60px rgba(0,0,0,.5);
+}
+
+.browse-card:hover {
+  filter: brightness(1.1);
+}

@@ -1,0 +1,201 @@
+/* =========================================
+   1. KHUNG TỔNG THỂ (NOTIFICATIONS CONTAINER)
+   ========================================= */
+.notifications-scroll-container {
+  flex: 1;
+  background-color: #121212;
+  border-radius: 8px;
+  overflow-y: auto; /* Cho phép cuộn toàn bộ trang bao gồm cả Footer */
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  scrollbar-gutter: stable; /* Giữ layout ổn định khi thanh cuộn xuất hiện */
+}
+
+/* --- Tùy chỉnh thanh cuộn mảnh (Scrollbar) --- */
+.notifications-scroll-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.notifications-scroll-container::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Mặc định ẩn */
+  border-radius: 10px;
+}
+
+.notifications-scroll-container:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3); /* Hiện khi rê chuột vào */
+}
+
+/* =========================================
+   2. TIÊU ĐỀ & BỘ LỌC (HEADER & FILTERS)
+   ========================================= */
+.notifications-content-inner {
+  padding: 24px;
+  flex: 1;
+}
+
+.notifications-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  letter-spacing: -1px;
+}
+
+.notifications-header p {
+  color: #a7a7a7;
+  font-size: 14px;
+  margin: 0 0 24px 0;
+  font-weight: 500;
+}
+
+.notifications-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.notif-filter-btn {
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 500px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.notif-filter-btn:hover {
+  background-color: #3e3e3e;
+}
+
+.notif-filter-btn.active {
+  background-color: white;
+  color: black;
+}
+
+/* =========================================
+   3. CẤU TRÚC DANH SÁCH (NOTIF LIST)
+   ========================================= */
+.notif-section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+.notif-divider {
+  height: 1px;
+  background-color: #2a2a2a;
+  margin-bottom: 16px;
+}
+
+/* Thẻ thông báo bài hát */
+.notif-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #2a2a2a;
+  transition: 0.2s;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hiệu ứng làm nổi bật thẻ khi hover */
+.notif-item:hover {
+  background-color: #282828;
+  padding: 16px;
+  margin: 0 -16px; /* Mở rộng thẻ sang hai bên khi hover */
+  border-bottom-color: transparent;
+}
+
+.notif-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.notif-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.notif-text h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
+
+.notif-artist {
+  color: #a7a7a7;
+  font-size: 14px;
+  margin: 0 0 8px 0;
+  font-weight: 500;
+}
+
+.notif-meta {
+  color: #a7a7a7;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* =========================================
+   4. CÁC NÚT THAO TÁC (ACTIONS)
+   ========================================= */
+.notif-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.notif-add-btn {
+  color: #a7a7a7;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.notif-add-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+.notif-add-btn:hover {
+  color: white;
+  transform: scale(1.05);
+}
+
+.notif-play-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  opacity: 0.8;
+}
+
+.notif-play-btn svg {
+  width: 16px;
+  height: 16px;
+  margin-left: 2px;
+}
+
+.notif-play-btn:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
