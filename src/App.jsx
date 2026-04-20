@@ -10,10 +10,8 @@ import Notifications from './components/Notifications/Notifications';
 import Browse from './components/Browse/Browse';
 import InstallApp from './components/InstallApp/InstallApp';
 import FriendsModal from './components/FriendsModal/FriendsModal';
+import ArtistPage from './components/ArtistPage/ArtistPage'; 
 import './App.css';
-
-// Nếu Quân chưa làm trang ArtistsView, hãy tạm comment dòng import này lại
-// import ArtistsView from './components/ArtistsView/ArtistsView'; 
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -112,6 +110,7 @@ function App() {
               currentView={currentView} 
               onHomeClick={() => setCurrentView('home')}
               onSearchClick={() => setCurrentView('search')}
+              setView={setCurrentView} 
             />
           </div>
         )}
@@ -119,7 +118,6 @@ function App() {
         {!isMobile && <div className="resizer" onMouseDown={startResizingLeft} />}
 
         <div className="main-view-container">
-          {/* Đã xóa comment rác ở đây để không bị lỗi syntax */}
           {currentView === 'install' ? (
             <InstallApp /> 
           ) : currentView === 'notifications' ? (
@@ -128,8 +126,14 @@ function App() {
             <Browse searchQuery={searchQuery} onSongClick={(song) => setSelectedSong(song)} /> 
           ) : currentView === 'artists' ? (
             <div style={{color: 'white', padding: '20px'}}>Artists View (Đang xây dựng...)</div>
+          ) : currentView === 'artist_lilnasx' ? (
+            <ArtistPage /> 
           ) : (
-            <MainContent searchQuery={searchQuery} onSongClick={(song) => setSelectedSong(song)} />
+            <MainContent 
+              searchQuery={searchQuery} 
+              onSongClick={(song) => setSelectedSong(song)} 
+              onNavigateToArtist={setCurrentView} /* 👈 ĐÃ FIX: Thêm prop này để MainContent chuyển được trang */
+            />
           )}
         </div>
 
